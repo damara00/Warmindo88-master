@@ -21,7 +21,7 @@ class _HomePageState extends State<HomePage> {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Expanded(
-            flex: 14,
+            flex: 20,
             child: Column(
               children: [
                 _topMenu(
@@ -31,24 +31,29 @@ class _HomePageState extends State<HomePage> {
                 Container(
                   height: 100,
                   padding: const EdgeInsets.symmetric(vertical: 24),
-                  color: Colors.white, // Atur warna latar belakang container
+                  color: Color.fromARGB(255, 241, 241,
+                      241), // Atur warna latar belakang container
                   child: ListView(
                     scrollDirection: Axis.horizontal,
                     children: [
                       _itemTab(
-                        title: 'Burger',
+                        imagePath: 'assets/fonts/images/food.png',
+                        title: 'Semua',
                         isActive: true,
                       ),
                       _itemTab(
-                        title: 'Noodles',
+                        imagePath: 'assets/fonts/images/food.png',
+                        title: 'Makanan',
                         isActive: false,
                       ),
                       _itemTab(
-                        title: 'Drinks',
+                        imagePath: 'assets/fonts/images/food.png',
+                        title: 'Camilan',
                         isActive: false,
                       ),
                       _itemTab(
-                        title: 'Desserts',
+                        imagePath: 'assets/fonts/images/food.png',
+                        title: 'Minuman',
                         isActive: false,
                       )
                     ],
@@ -62,52 +67,42 @@ class _HomePageState extends State<HomePage> {
                       _item(
                         title: 'Original Burger',
                         price: '\$5.99',
-                        box: 'Pesan',
                       ),
                       _item(
                         title: 'Double Burger',
                         price: '\$10.99',
-                        box: 'Pesan',
                       ),
                       _item(
                         title: 'Original Burger',
                         price: '\$5.99',
-                        box: 'Pesan',
                       ),
                       _item(
                         title: 'Double Burger',
                         price: '\$10.99',
-                        box: 'Pesan',
                       ),
                       _item(
                         title: 'Original Burger',
                         price: '\$5.99',
-                        box: 'Pesan',
                       ),
                       _item(
                         title: 'Double Burger',
                         price: '\$10.99',
-                        box: 'Pesan',
                       ),
                       _item(
                         title: 'Original Burger',
                         price: '\$5.99',
-                        box: 'Pesan',
                       ),
                       _item(
                         title: 'Double Burger',
                         price: '\$10.99',
-                        box: 'Pesan',
                       ),
                       _item(
                         title: 'Original Burger',
                         price: '\$5.99',
-                        box: 'Pesan',
                       ),
                       _item(
                         title: 'Double Burger',
                         price: '\$10.99',
-                        box: 'Pesan',
                       ),
                     ],
                   ),
@@ -123,7 +118,6 @@ class _HomePageState extends State<HomePage> {
   Widget _item({
     required String title,
     required String price,
-    required String box,
   }) {
     return Container(
       margin: const EdgeInsets.only(right: 20, bottom: 20),
@@ -145,45 +139,54 @@ class _HomePageState extends State<HomePage> {
             style: const TextStyle(
               color: Color.fromARGB(255, 18, 18, 18),
               fontWeight: FontWeight.bold,
-              fontSize: 14,
+              fontSize: 16,
             ),
           ),
-          const SizedBox(height: 20),
+          const SizedBox(height: 10),
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               Text(
                 price,
                 style: const TextStyle(
-                  color: Color.fromARGB(255, 204, 204, 204),
-                  fontSize: 20,
+                  color: Color.fromARGB(255, 160, 158, 158),
+                  fontSize: 16,
                 ),
               ),
             ],
           ),
-          const SizedBox(height: 20),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              Text(
-                box,
-                style: const TextStyle(
-                  color: Color.fromARGB(255, 204, 204, 204),
-                  fontSize: 20,
-                ),
+          const SizedBox(height: 10),
+          TextButton(
+            onPressed: () {
+              _Pesanan(context);
+            },
+            style: TextButton.styleFrom(
+              backgroundColor: Color.fromARGB(255, 101, 196, 102),
+              padding: const EdgeInsets.symmetric(horizontal: 80),
+              alignment: Alignment.center,
+            ),
+            child: Text(
+              "Pesan",
+              style: TextStyle(
+                color: Colors.white,
+                fontWeight: FontWeight.bold,
+                fontSize: 14,
               ),
-            ],
+            ),
           ),
         ],
       ),
     );
   }
 
-  Widget _itemTab({required String title, required bool isActive}) {
+  Widget _itemTab(
+      {required String imagePath,
+      required String title,
+      required bool isActive}) {
     return Container(
       width: 180,
       margin: const EdgeInsets.only(right: 26),
-      padding: const EdgeInsets.symmetric(vertical: 8, horizontal: 24),
+      padding: const EdgeInsets.symmetric(vertical: 4, horizontal: 24),
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(10),
         color: isActive
@@ -193,6 +196,17 @@ class _HomePageState extends State<HomePage> {
       child: Row(
         children: [
           const SizedBox(width: 8),
+          Padding(
+            padding: const EdgeInsets.only(
+                right: 8), // Sesuaikan jarak sesuai kebutuhan
+            child: Image.asset(
+              imagePath,
+              color: isActive
+                  ? Color.fromARGB(255, 255, 255, 255)
+                  : Color.fromARGB(255, 18, 18, 18),
+              height: 20,
+            ),
+          ),
           Text(
             title,
             style: TextStyle(
@@ -213,7 +227,8 @@ class _HomePageState extends State<HomePage> {
     required String subTitle,
   }) {
     return Container(
-      color: Colors.white, // Atur warna latar belakang container
+      color: Color.fromARGB(
+          255, 241, 241, 241), // Atur warna latar belakang container
       padding: const EdgeInsets.all(16),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.start,
@@ -226,17 +241,21 @@ class _HomePageState extends State<HomePage> {
               Text(
                 title,
                 style: const TextStyle(
-                  color: Colors.black, // Ubah warna teks sesuai kebutuhan
-                  fontSize: 20,
+                  color: Color.fromARGB(
+                      255, 3, 61, 158), // Ubah warna teks sesuai kebutuhan
+                  fontSize: 28,
                   fontWeight: FontWeight.bold,
+                  fontFamily: 'FontGitaluevo',
+                  letterSpacing: 1.5,
                 ),
               ),
               const SizedBox(height: 6),
               Text(
                 subTitle,
                 style: const TextStyle(
-                  color: Colors.black54, // Ubah warna teks sesuai kebutuhan
-                  fontSize: 10,
+                  color: Color.fromARGB(
+                      255, 18, 18, 18), // Ubah warna teks sesuai kebutuhan
+                  fontSize: 14,
                 ),
               ),
             ],
@@ -244,6 +263,91 @@ class _HomePageState extends State<HomePage> {
           Expanded(flex: 1, child: Container(width: double.infinity)),
         ],
       ),
+    );
+  }
+
+  void _Pesanan(context) {
+    showDialog(
+      context: context,
+      builder: (context) {
+        return SimpleDialog(
+          children: <Widget>[
+            Padding(
+              padding: EdgeInsets.only(left: 100, right: 100),
+              child: Row(
+                children: <Widget>[
+                  Expanded(
+                    child: Text(
+                      "Tambah Pengguna",
+                      style: TextStyle(fontSize: 20.0),
+                    ),
+                  ),
+                  IconButton(
+                    icon: Icon(Icons.close),
+                    onPressed: () {
+                      Navigator.pop(context);
+                    },
+                  )
+                ],
+              ),
+            ),
+            Divider(),
+            Padding(
+              padding: EdgeInsets.all(10.0),
+              child: Text(
+                "Nama Lengkap",
+              ),
+            ),
+            Padding(
+              padding: EdgeInsets.only(left: 10.0, right: 10.0),
+              child: TextField(
+                style: new TextStyle(
+                    fontSize: 14.0, height: 1.0, color: Colors.black),
+                decoration: new InputDecoration(
+                  hintText: "Input nama lengkap",
+                  border: OutlineInputBorder(
+                      borderRadius: new BorderRadius.circular(3.0)),
+                  contentPadding: const EdgeInsets.symmetric(
+                      vertical: 14.0, horizontal: 15.0),
+                ),
+              ),
+            ),
+            Padding(
+              padding: EdgeInsets.all(10.0),
+              child: Text(
+                "Kontak",
+              ),
+            ),
+            Padding(
+              padding: EdgeInsets.only(left: 10.0, right: 10.0),
+              child: TextField(
+                style: new TextStyle(
+                    fontSize: 14.0, height: 1.0, color: Colors.black),
+                decoration: new InputDecoration(
+                  hintText: "Input kontak",
+                  border: OutlineInputBorder(
+                      borderRadius: new BorderRadius.circular(3.0)),
+                  contentPadding: const EdgeInsets.symmetric(
+                      vertical: 14.0, horizontal: 15.0),
+                ),
+              ),
+            ),
+            Padding(
+              padding: EdgeInsets.fromLTRB(10.0, 10.0, 10.0, 0),
+              child: MaterialButton(
+                color: Colors.blue,
+                child: Text(
+                  "SIMPAN",
+                  style: TextStyle(color: Colors.white),
+                ),
+                onPressed: () {
+                  Navigator.pop(context);
+                },
+              ),
+            )
+          ],
+        );
+      },
     );
   }
 }

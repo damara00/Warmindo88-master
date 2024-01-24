@@ -59,6 +59,11 @@ flutter:
   # To add assets to your application, add an assets section, like this:
   assets:
     - assets/fonts/images/logo.png
+    - assets/fonts/images/admin.png
+    - assets/fonts/images/cart.png
+    - assets/fonts/images/shop.png
+    - assets/fonts/images/stack.png
+    - assets/fonts/images/food.png
   #   - images/a_dot_burr.jpeg
   #   - images/a_dot_ham.jpeg
 
@@ -80,6 +85,9 @@ flutter:
         - asset: assets/fonts/Poppins-SemiBold.ttf
         - asset: assets/fonts/Poppins-Medium.ttf
         - asset: assets/fonts/Poppins-Bold.ttf
+    - family: FontGitaluevo
+      fonts:
+        - asset: assets/fonts/Gitaluevo.ttf
 
   #
   # For details regarding fonts from package dependencies,

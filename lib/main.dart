@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import './home.dart';
+import './dashboard.dart';
 
 void main() {
   runApp(const MyApp());
@@ -30,19 +30,17 @@ class MainPage extends StatefulWidget {
 }
 
 class _MainPageState extends State<MainPage> {
-  String pageActive = 'Home';
+  String pageActive = 'Dashboard';
 
   _pageView() {
     switch (pageActive) {
-      case 'Home':
+      case 'Dashboard':
         return const HomePage();
-      case 'Menu':
+      case 'Pesanan':
         return Container();
-      case 'History':
+      case 'Antrian':
         return Container();
-      case 'Promos':
-        return Container();
-      case 'Settings':
+      case 'Login Akun':
         return Container();
       default:
         return const HomePage();
@@ -58,7 +56,7 @@ class _MainPageState extends State<MainPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Color.fromARGB(255, 241, 241, 241),
+      backgroundColor: Colors.white,
       body: Row(
         children: [
           Container(
@@ -69,13 +67,13 @@ class _MainPageState extends State<MainPage> {
           ),
           Expanded(
             child: Container(
-              margin: const EdgeInsets.only(top: 24, right: 12),
-              padding: const EdgeInsets.only(top: 12, right: 12, left: 12),
+              padding: const EdgeInsets.only(
+                right: 12,
+                left: 32,
+                top: 18,
+              ),
               decoration: const BoxDecoration(
-                borderRadius: BorderRadius.only(
-                    topLeft: Radius.circular(12),
-                    topRight: Radius.circular(12)),
-                color: Color(0xff17181f),
+                color: Color.fromARGB(255, 241, 241, 241),
               ),
               child: _pageView(),
             ),
@@ -89,25 +87,25 @@ class _MainPageState extends State<MainPage> {
     return Column(
       children: [
         _logo(),
-        const SizedBox(height: 20),
+        const SizedBox(height: 16),
         Expanded(
           child: ListView(
             children: [
               _itemMenu(
                 menu: 'Dashboard',
-                icon: Icons.home,
+                imagePath: 'assets/fonts/images/shop.png',
               ),
               _itemMenu(
                 menu: 'Pesanan',
-                icon: Icons.shopping_cart,
+                imagePath: 'assets/fonts/images/cart.png',
               ),
               _itemMenu(
                 menu: 'Antrian',
-                icon: Icons.stacked_bar_chart,
+                imagePath: 'assets/fonts/images/stack.png',
               ),
               _itemMenu(
                 menu: 'Login Akun',
-                icon: Icons.person,
+                imagePath: 'assets/fonts/images/admin.png',
               ),
             ],
           ),
@@ -123,15 +121,21 @@ class _MainPageState extends State<MainPage> {
         mainAxisAlignment:
             MainAxisAlignment.center, // Align the column content in the center
         children: [
-          Image.asset('assets/fonts/images/logo.png'),
+          Transform.scale(
+            scale: 3.0,
+            child: Image.asset('assets/fonts/images/logo.png'),
+          ),
         ],
       ),
     );
   }
 
-  Widget _itemMenu({required String menu, required IconData icon}) {
+  Widget _itemMenu({
+    required String menu,
+    required String imagePath,
+  }) {
     return Padding(
-      padding: const EdgeInsets.symmetric(vertical: 40),
+      padding: const EdgeInsets.symmetric(vertical: 16),
       child: GestureDetector(
         onTap: () => _setPage(menu),
         child: Container(
@@ -149,15 +153,17 @@ class _MainPageState extends State<MainPage> {
                       ? Color(0xFFFFD88D)
                       : Colors.transparent,
                 ),
-                child: Icon(
-                  icon,
-                  color: pageActive == menu ? Color(0xFFFFA825) : Colors.grey,
-                  size: 27,
+                child: Transform.scale(
+                  scale: 0.9,
+                  child: Image.asset(
+                    imagePath,
+                    color: pageActive == menu ? Color(0xFFFFA825) : Colors.grey,
+                  ),
                 ),
               ),
               SizedBox(height: 8),
               Container(
-                margin: const EdgeInsets.only(top: 8),
+                margin: const EdgeInsets.only(top: 2),
                 child: Text(
                   menu,
                   style: TextStyle(
