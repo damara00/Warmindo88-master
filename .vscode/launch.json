@@ -1,0 +1,49 @@
+{
+    // Use IntelliSense to learn about possible attributes.
+    // Hover to view descriptions of existing attributes.
+    // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+    "version": "0.2.0",
+    "configurations": [
+        
+        {
+            "name": "Warmindo88-main",
+            "cwd": "Project Flutter\\Warmindo88-main",
+            "request": "launch",
+            "type": "dart"
+        },
+        {
+            "name": "Warmindo88-main (profile mode)",
+            "cwd": "Project Flutter\\Warmindo88-main",
+            "request": "launch",
+            "type": "dart",
+            "flutterMode": "profile"
+        },
+        {
+            "name": "Warmindo88-main (release mode)",
+            "cwd": "Project Flutter\\Warmindo88-main",
+            "request": "launch",
+            "type": "dart",
+            "flutterMode": "release"
+        },
+        {
+            "name": "$RJFTI4I",
+            "cwd": "$RECYCLE.BIN\\S-1-5-21-2026664808-2205684955-2034996561-1001\\$RJFTI4I",
+            "request": "launch",
+            "type": "dart"
+        },
+        {
+            "name": "$RJFTI4I (profile mode)",
+            "cwd": "$RECYCLE.BIN\\S-1-5-21-2026664808-2205684955-2034996561-1001\\$RJFTI4I",
+            "request": "launch",
+            "type": "dart",
+            "flutterMode": "profile"
+        },
+        {
+            "name": "$RJFTI4I (release mode)",
+            "cwd": "$RECYCLE.BIN\\S-1-5-21-2026664808-2205684955-2034996561-1001\\$RJFTI4I",
+            "request": "launch",
+            "type": "dart",
+            "flutterMode": "release"
+        }
+    ]
+}
