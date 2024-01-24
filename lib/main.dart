@@ -49,7 +49,7 @@ class _MainPageState extends State<MainPage> {
     }
   }
 
-  _setPage(String page) {
+  _setPage(String page, {bool initial = false}) {
     setState(() {
       pageActive = page;
     });
@@ -96,7 +96,6 @@ class _MainPageState extends State<MainPage> {
               _itemMenu(
                 menu: 'Dashboard',
                 icon: Icons.home,
-                pageActive: true,
               ),
               _itemMenu(
                 menu: 'Pesanan',
